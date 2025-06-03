@@ -1,6 +1,6 @@
-# Welcome to your Expo app 👋
+# React Native Currency List Component
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A reusable `CurrencyList` component, designed to display and filter both Crypto and Fiat currencies. A `DemoScreen` is provided to simulate local DB interactions and demonstrate usage scenarios.
 
 ## Get started
 
@@ -16,35 +16,118 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+## 📦 Tech Stack
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+* **React Native**
+* **TypeScript**
+* **Zustand** for state management
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+## 🧹 Project Structure
 
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+app/
+├── components/
+│   └── CurrencyList.tsx         # Reusable currency list component
+├── screens/
+│   └── DemoScreen.tsx           # Demo view to test and showcase functionality
+├── store/
+│   └── currencyStore.ts         # Zustand-based in-memory "local DB"
+├── models/
+│   └── CurrencyInfo.ts          # Type definition for currency data
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+## 📘 Component: CurrencyList
 
-To learn more about developing your project with Expo, look at the following resources:
+### Props
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```ts
+type Props = {
+  data: CurrencyInfo[]
+  searchTerm?: string // Optional filter term passed in from parent
+}
+```
 
-## Join the community
+### Features
 
-Join our community of developers creating universal apps.
+* Displays a scrollable list of currencies
+* Shows empty state if no results match
+* Can filter the data by a search keyword 
+* Fully controlled via parent (search logic is not handled internally)
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+---
+
+## 🥪 DemoScreen Functionalities
+
+The `DemoScreen` simulates native-style interactions using 5 buttons:
+
+1. **Clear Local DB** - Clears all currency data
+2. **Insert Data** - Inserts demo Currency List A and B into local DB
+3. **Show List A (Crypto)** - Displays `CurrencyList` with Crypto data
+4. **Show List B (Fiat)** - Displays `CurrencyList` with Fiat data
+5. **Show All Currencies** - Displays items from both List A and List B.
+
+Also includes a **search bar** above the list, which:
+
+* Filters the list using the matching rules above
+* Allows cancelling the search via back/clear buttons
+
+---
+
+## 📟 Data Format
+
+### `CurrencyInfo`
+
+```ts
+type CurrencyInfo = {
+  id: string
+  name: string
+  symbol: string
+  code?: string // Optional, for fiat currencies only
+}
+```
+
+### Sample Data
+
+#### Currency List A - Crypto
+
+```json
+[
+  { "id": "BTC", "name": "Bitcoin", "symbol": "BTC" },
+  { "id": "ETH", "name": "Ethereum", "symbol": "ETH" },
+  { "id": "XRP", "name": "XRP", "symbol": "XRP" }
+]
+```
+
+#### Currency List B - Fiat
+
+```json
+[
+  { "id": "SGD", "name": "Singapore Dollar", "symbol": "$", "code": "SGD" },
+  { "id": "EUR", "name": "Euro", "symbol": "€", "code": "EUR" },
+  { "id": "GBP", "name": "British Pound", "symbol": "£", "code": "GBP" }
+]
+```
+
+---
+
+## 🛠 Development Notes
+
+* All data operations (insert, query, clear) are simulated in memory via Zustand
+* No I/O operations block the UI thread
+* Ready to be extended with real persistent storage (AsyncStorage, SQLite, etc.)
+
+---
+
+## ⚠️ To Do (Optional Enhancements)
+
+* Add persistent storage
+* Add item click callback to `CurrencyList`
+* Unit tests & Instrumentation tests
+* Improve search bar UX (animations, debounce)
+
+
+
