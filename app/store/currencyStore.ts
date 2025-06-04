@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { CurrencyInfo } from '../models/CurrencyInfo';
+import { storage } from '../utils/storage';
 
 // Sample data
 export const CRYPTO_CURRENCIES: CurrencyInfo[] = [
@@ -83,6 +84,7 @@ interface CurrencyStore {
   rawCurrencies: CurrencyInfo[];
   filter: CurrencyFilter;
   currencies: CurrencyInfo[];
+  isLoading: boolean;
   
   // Actions
   setCurrencies: (currencies: CurrencyInfo[]) => void;
@@ -90,53 +92,56 @@ interface CurrencyStore {
   insertRandomCurrency: () => void;
   resetData: () => void;
   setFilter: (filter: CurrencyFilter) => void;
-  showCryptoList: () => void;
-  showFiatList: () => void;
-  showAllCurrencies: () => void;
+  initializeStore: () => Promise<void>;
 }
 
 export const useCurrencyStore = create<CurrencyStore>((set, get) => ({
   // State
-  rawCurrencies: INITIAL_DATA,
+  rawCurrencies: [],
   filter: 'all',
-  currencies: INITIAL_DATA,
+  currencies: [],
+  isLoading: true,
   
   // Actions
-  setCurrencies: (currencies) => set({ 
-    rawCurrencies: currencies,
-    currencies: currencies 
-  }),
+  setCurrencies: (currencies) => {
+    set({ 
+      rawCurrencies: currencies,
+      currencies: currencies 
+    });
+    storage.saveCurrencies(currencies);
+  },
   
-  clearCurrencies: () => set({ 
-    rawCurrencies: [],
-    currencies: []
-  }),
+  clearCurrencies: () => {
+    set({ 
+      rawCurrencies: [],
+      currencies: []
+    });
+    storage.saveCurrencies([]);
+  },
   
   insertRandomCurrency: () => {
-    setTimeout(() => {
-      const newCurrency = generateRandomCurrency();
-      const currentCurrencies = get().rawCurrencies;
-      const newRawCurrencies = [...currentCurrencies, newCurrency];
-      const filter = get().filter;
-      
-      set({ 
-        rawCurrencies: newRawCurrencies,
-        currencies: filter === 'all' 
-          ? newRawCurrencies
-          : filter === 'crypto'
-          ? newRawCurrencies.filter(isCryptoCurrency)
-          : newRawCurrencies.filter(currency => !isCryptoCurrency(currency))
-      });
-    }, 100);
+    const newCurrency = generateRandomCurrency();
+    const currentCurrencies = get().rawCurrencies;
+    const newRawCurrencies = [...currentCurrencies, newCurrency];
+    const filter = get().filter;
+    
+    set({ 
+      rawCurrencies: newRawCurrencies,
+      currencies: filter === 'all' 
+        ? newRawCurrencies
+        : filter === 'crypto'
+        ? newRawCurrencies.filter(isCryptoCurrency)
+        : newRawCurrencies.filter(currency => !isCryptoCurrency(currency))
+    });
+    storage.saveCurrencies(newRawCurrencies);
   },
 
   resetData: () => {
-    setTimeout(() => {
-      set({ 
-        rawCurrencies: INITIAL_DATA,
-        currencies: INITIAL_DATA
-      });
-    }, 100);
+    set({ 
+      rawCurrencies: INITIAL_DATA,
+      currencies: INITIAL_DATA
+    });
+    storage.saveCurrencies(INITIAL_DATA);
   },
 
   setFilter: (filter) => {
@@ -150,28 +155,13 @@ export const useCurrencyStore = create<CurrencyStore>((set, get) => ({
         : rawCurrencies.filter(currency => !isCryptoCurrency(currency))
     });
   },
-  
-  showCryptoList: () => {
-    const rawCurrencies = get().rawCurrencies;
+
+  initializeStore: async () => {
+    const savedCurrencies = await storage.loadCurrencies();
     set({ 
-      filter: 'crypto',
-      currencies: rawCurrencies.filter(isCryptoCurrency)
-    });
-  },
-  
-  showFiatList: () => {
-    const rawCurrencies = get().rawCurrencies;
-    set({ 
-      filter: 'fiat',
-      currencies: rawCurrencies.filter(currency => !isCryptoCurrency(currency))
-    });
-  },
-  
-  showAllCurrencies: () => {
-    const rawCurrencies = get().rawCurrencies;
-    set({ 
-      filter: 'all',
-      currencies: rawCurrencies
+      rawCurrencies: savedCurrencies || INITIAL_DATA,
+      currencies: savedCurrencies || INITIAL_DATA,
+      isLoading: false
     });
   },
 })); 
