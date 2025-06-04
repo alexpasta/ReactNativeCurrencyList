@@ -12,9 +12,9 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { Chip } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { CurrencyList } from '../components/CurrencyList';
-import type { CurrencyFilter } from '../store/currencyStore';
 import { useCurrencyStore } from '../store/currencyStore';
 
 export const DemoScreen: React.FC = () => {
@@ -28,9 +28,7 @@ export const DemoScreen: React.FC = () => {
     clearCurrencies,
     insertRandomCurrency,
     resetData,
-    showCryptoList,
-    showFiatList,
-    showAllCurrencies,
+    setFilter,
   } = useCurrencyStore();
 
   const handleClearSearch = () => {
@@ -53,20 +51,6 @@ export const DemoScreen: React.FC = () => {
       useNativeDriver: true,
     }).start();
     setIsFabOpen(false);
-  };
-
-  const getFilterButtonStyle = (buttonFilter: CurrencyFilter) => {
-    return [
-      styles.button,
-      filter === buttonFilter && styles.buttonActive
-    ];
-  };
-
-  const getFilterTextStyle = (buttonFilter: CurrencyFilter) => {
-    return [
-      styles.buttonText,
-      filter === buttonFilter && styles.buttonTextActive
-    ];
   };
 
   // FAB animations
@@ -123,42 +107,60 @@ export const DemoScreen: React.FC = () => {
         </View>
 
         {/* Filter Buttons */}
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity 
-            style={getFilterButtonStyle('crypto')}
-            onPress={showCryptoList}
+        <View style={styles.filterContainer}>
+          <Chip
+            selected={filter === 'all'}
+            onPress={() => setFilter('all')}
+            icon="view-list"
+            mode="outlined"
+            compact
+            style={[
+              styles.chip,
+              filter === 'all' && styles.chipSelected
+            ]}
+            textStyle={[
+              styles.chipText,
+              filter === 'all' && styles.chipTextSelected
+            ]}
           >
-            <MaterialIcons 
-              name="currency-bitcoin" 
-              size={20} 
-              color={filter === 'crypto' ? '#007AFF' : 'white'} 
-            />
-            <Text style={getFilterTextStyle('crypto')}>Cryptocurrencies</Text>
-          </TouchableOpacity>
+            All
+          </Chip>
           
-          <TouchableOpacity 
-            style={getFilterButtonStyle('fiat')}
-            onPress={showFiatList}
+          <Chip
+            selected={filter === 'crypto'}
+            onPress={() => setFilter('crypto')}
+            icon="currency-btc"
+            mode="outlined"
+            compact
+            style={[
+              styles.chip,
+              filter === 'crypto' && styles.chipSelected
+            ]}
+            textStyle={[
+              styles.chipText,
+              filter === 'crypto' && styles.chipTextSelected
+            ]}
           >
-            <MaterialIcons 
-              name="attach-money" 
-              size={20} 
-              color={filter === 'fiat' ? '#007AFF' : 'white'} 
-            />
-            <Text style={getFilterTextStyle('fiat')}>Fiat Currencies</Text>
-          </TouchableOpacity>
+            Crypto
+          </Chip>
           
-          <TouchableOpacity 
-            style={getFilterButtonStyle('all')}
-            onPress={showAllCurrencies}
+          <Chip
+            selected={filter === 'fiat'}
+            onPress={() => setFilter('fiat')}
+            icon="cash"
+            mode="outlined"
+            compact
+            style={[
+              styles.chip,
+              filter === 'fiat' && styles.chipSelected
+            ]}
+            textStyle={[
+              styles.chipText,
+              filter === 'fiat' && styles.chipTextSelected
+            ]}
           >
-            <MaterialIcons 
-              name="list" 
-              size={20} 
-              color={filter === 'all' ? '#007AFF' : 'white'} 
-            />
-            <Text style={getFilterTextStyle('all')}>All Currencies</Text>
-          </TouchableOpacity>
+            Fiat
+          </Chip>
         </View>
 
         {/* Currency List */}
@@ -292,31 +294,23 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#999',
   },
-  buttonContainer: {
+  filterContainer: {
+    flexDirection: 'row',
     padding: 16,
     gap: 8,
   },
-  button: {
-    backgroundColor: '#007AFF',
-    padding: 12,
-    borderRadius: 8,
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'center',
+  chip: {
+    backgroundColor: '#F5F5F5',
+    borderRadius: 16,
   },
-  buttonActive: {
-    backgroundColor: '#fff',
-    borderWidth: 1,
-    borderColor: '#007AFF',
+  chipSelected: {
+    backgroundColor: '#BBBBBB',
   },
-  buttonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: '600',
-    marginLeft: 8,
+  chipText: {
+    color: '#666',
   },
-  buttonTextActive: {
-    color: '#007AFF',
+  chipTextSelected: {
+    color: '#FFFFFF',
   },
   listContainer: {
     flex: 1,
