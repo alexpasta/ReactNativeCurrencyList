@@ -289,8 +289,6 @@ const styles = StyleSheet.create({
   searchContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
     borderBottomWidth: 1,
     borderBottomColor: '#E5E5E5',
   },
@@ -298,7 +296,6 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 40,
     backgroundColor: '#F5F5F5',
-    borderRadius: 8,
     paddingHorizontal: 12,
     fontSize: 16,
   },
