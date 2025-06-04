@@ -1,3 +1,4 @@
+import { MaterialIcons } from '@expo/vector-icons';
 import React from 'react';
 import {
   FlatList,
@@ -33,20 +34,33 @@ export const CurrencyList: React.FC<Props> = ({ data, searchTerm = '' }) => {
     });
   }, [data, searchTerm]);
 
-  const renderItem = ({ item }: ListRenderItemInfo<CurrencyInfo>) => (
-    <Pressable 
-      style={({ pressed }) => [
-        styles.item,
-        pressed && styles.itemPressed
-      ]}
-    >
-      <View style={styles.symbolContainer}>
-        <Text style={styles.symbol}>{item.symbol}</Text>
-        {item.code && <Text style={styles.code}>{item.code}</Text>}
-      </View>
-      <Text style={styles.name}>{item.name}</Text>
-    </Pressable>
-  );
+  const renderItem = ({ item }: ListRenderItemInfo<CurrencyInfo>) => {
+    const initial = item.name.charAt(0).toUpperCase();
+  
+    return (
+      <Pressable 
+        style={({ pressed }) => [
+          styles.itemContainer,
+          pressed && styles.itemPressed
+        ]}
+      >
+        <View style={styles.iconCircle}>
+          <Text style={styles.iconText}>{initial}</Text>
+        </View>
+        
+        <View style={styles.itemContent}>
+          <Text style={styles.itemName}>{item.name}</Text>
+          <View style={styles.itemRightContainer}>
+            <View style={styles.symbolContainer}>
+              <Text style={styles.symbol}>{item.symbol}</Text>
+              {item.code && <Text style={styles.code}>{item.code}</Text>}
+            </View>
+            <MaterialIcons name="chevron-right" size={20} color="#999" />
+          </View>
+        </View>
+      </Pressable>
+    );
+  };
 
   if (filteredData.length === 0) {
     return (
@@ -82,37 +96,64 @@ export const CurrencyList: React.FC<Props> = ({ data, searchTerm = '' }) => {
 const styles = StyleSheet.create({
   list: {
     flex: 1,
+    backgroundColor: '#f5f5fa',
   },
   listContent: {
-    paddingHorizontal: 16,
-    paddingBottom: 20,
+    paddingLeft: 16,
+    backgroundColor: '#fff',
   },
-  item: {
+  itemContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 12,
-    borderBottomWidth: 1,
-    borderBottomColor: '#E5E5E5',
-    minHeight: 60,
   },
   itemPressed: {
     backgroundColor: '#F5F5F5',
   },
-  symbolContainer: {
-    width: 60,
+  iconCircle: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: '#6b7280',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginRight: 12,
   },
-  symbol: {
+  iconText: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
+  itemContent: {
+    flex: 1,
+    paddingVertical: 16,
+    paddingRight: 16,
+    borderBottomWidth: 1,
+    borderColor: '#eee',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  itemName: {
+    flex: 1,
     fontSize: 16,
-    fontWeight: '600',
+    color: '#111827',
+  },
+  itemRightContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  symbolContainer: {
+    flexDirection: 'row',
+  },
+  symbol: {
+    fontSize: 14,
+    color: '#6b7280',
+    marginRight: 4,
   },
   code: {
     fontSize: 12,
     color: '#666',
     marginTop: 2,
-  },
-  name: {
-    fontSize: 16,
   },
   emptyContainer: {
     flex: 1,
