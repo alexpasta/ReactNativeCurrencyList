@@ -1,7 +1,8 @@
 import { MaterialIcons } from '@expo/vector-icons';
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Animated,
+  BackHandler,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
@@ -83,6 +84,22 @@ export const DemoScreen: React.FC = () => {
     inputRange: [0, 1],
     outputRange: [0, 0.5],
   });
+
+  useEffect(() => {
+    const onBackPress = () => {
+      if (searchTerm && searchTerm.length > 0) {
+        handleClearSearch();
+        return true;
+      }
+      return false;
+    };
+
+    const subscription = BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+    return () => {
+      subscription.remove();
+    };
+  }, [searchTerm]);
 
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
