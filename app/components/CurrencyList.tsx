@@ -34,6 +34,7 @@ export const CurrencyList: React.FC<Props> = ({
 
   return (
     <FlatList
+      testID="currency-list"
       data={filteredData}
       renderItem={renderItem}
       keyExtractor={(item) => item.id}
