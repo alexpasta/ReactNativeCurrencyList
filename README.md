@@ -1,6 +1,6 @@
 # React Native Currency List Component
 
-A reusable `CurrencyList` component, designed to display and filter both Crypto and Fiat currencies. A `DemoScreen` is provided to simulate local DB interactions and demonstrate usage scenarios.
+A reusable `CurrencyList` component, designed to display and filter both Crypto and Fiat currencies. A `DemoScreen` is provided to demonstrate usage scenarios.
 
 ## Get started
 
@@ -16,15 +16,16 @@ A reusable `CurrencyList` component, designed to display and filter both Crypto 
    npx expo start
    ```
 
-## 📦 Tech Stack
+## Tech Stack
 
 * **React Native**
 * **TypeScript**
 * **Zustand** for state management
+* **AsyncStorage** for persistent storage
 
 ---
 
-## 🧹 Project Structure
+## Project Structure (only includes main files)
 
 ```
 app/
@@ -33,14 +34,16 @@ app/
 ├── screens/
 │   └── DemoScreen.tsx           # Demo view to test and showcase functionality
 ├── store/
-│   └── currencyStore.ts         # Zustand-based in-memory "local DB"
+│   └── currencyStore.ts         # Zustand-based store with AsyncStorage persistence
 ├── models/
 │   └── CurrencyInfo.ts          # Type definition for currency data
+├── utils/
+│   └── storage.ts               # AsyncStorage wrapper for data persistence
 ```
 
 ---
 
-## 📘 Component: CurrencyList
+## Component: CurrencyList
 
 ### Props
 
@@ -60,24 +63,30 @@ type Props = {
 
 ---
 
-## 🥪 DemoScreen Functionalities
+## DemoScreen Functionalities
 
-The `DemoScreen` simulates native-style interactions using 5 buttons:
+The `DemoScreen` provides 3 main interaction areas:
 
-1. **Clear Local DB** - Clears all currency data
-2. **Insert Data** - Inserts demo Currency List A and B into local DB
-3. **Show List A (Crypto)** - Displays `CurrencyList` with Crypto data
-4. **Show List B (Fiat)** - Displays `CurrencyList` with Fiat data
-5. **Show All Currencies** - Displays items from both List A and List B.
+### Filter Chips
+Three filter options at the top of the screen:
+1. **All** - Shows all currencies
+2. **Crypto** - Shows only cryptocurrency entries
+3. **Fiat** - Shows only fiat currency entries
 
-Also includes a **search bar** above the list, which:
+### Floating Action Menu
+A floating action button (FAB) that expands to reveal three actions:
+1. **Clear Data** - Clears all currency data from storage
+2. **Add Random Currency** - Adds a random currency to the list
+3. **Reset Data** - Resets to initial demo data
 
+### Search Functionality
+Includes a **search bar** above the list, which:
 * Filters the list using the matching rules above
 * Allows cancelling the search via back/clear buttons
 
 ---
 
-## 📟 Data Format
+## Data Format
 
 ### `CurrencyInfo`
 
@@ -114,20 +123,10 @@ type CurrencyInfo = {
 
 ---
 
-## 🛠 Development Notes
+## To Do
 
-* All data operations (insert, query, clear) are simulated in memory via Zustand
-* No I/O operations block the UI thread
-* Ready to be extended with real persistent storage (AsyncStorage, SQLite, etc.)
-
----
-
-## ⚠️ To Do (Optional Enhancements)
-
-* Add persistent storage
 * Add item click callback to `CurrencyList`
 * Unit tests & Instrumentation tests
 * Improve search bar UX (animations, debounce)
-
-
-
+* Support Manual Input for Currency Insertion
+* Integrate Nativewind
