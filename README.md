@@ -22,6 +22,7 @@ A reusable `CurrencyList` component, designed to display and filter both Crypto 
 * **TypeScript**
 * **Zustand** for state management
 * **AsyncStorage** for persistent storage
+* **Jest** for unit testing
 
 ---
 
@@ -121,12 +122,3 @@ type CurrencyInfo = {
 ]
 ```
 
----
-
-## To Do
-
-* Add item click callback to `CurrencyList`
-* Unit tests & Instrumentation tests
-* Improve search bar UX (animations, debounce)
-* Support Manual Input for Currency Insertion
-* Integrate Nativewind
