@@ -1,4 +1,4 @@
-import { CurrencyInfo } from "../models/CurrencyInfo";
+import { CurrencyInfo } from "app/models/CurrencyInfo";
 
 export function searchCurrencies(currencies: CurrencyInfo[], searchTerm: string): CurrencyInfo[] {
   if (!searchTerm) return currencies;

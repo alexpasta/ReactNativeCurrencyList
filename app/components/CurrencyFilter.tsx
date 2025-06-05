@@ -1,7 +1,7 @@
+import { CurrencyFilter as FilterType } from 'app/store/currencyStore';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Chip } from 'react-native-paper';
-import { CurrencyFilter as FilterType } from '../store/currencyStore';
 
 type Props = {
   currentFilter: FilterType;

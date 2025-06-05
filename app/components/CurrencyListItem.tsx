@@ -1,7 +1,7 @@
 import { MaterialIcons } from '@expo/vector-icons';
+import { CurrencyInfo } from 'app/models/CurrencyInfo';
 import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { CurrencyInfo } from '../models/CurrencyInfo';
 
 type Props = {
   item: CurrencyInfo;

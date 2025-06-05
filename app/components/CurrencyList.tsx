@@ -1,7 +1,7 @@
+import { CurrencyInfo } from 'app/models/CurrencyInfo';
+import { searchCurrencies } from 'app/utils/currencySearch';
 import React from 'react';
 import { FlatList, ListRenderItemInfo, StyleSheet } from 'react-native';
-import { CurrencyInfo } from '../models/CurrencyInfo';
-import { searchCurrencies } from '../utils/currencySearch';
 import { CurrencyListItem } from './CurrencyListItem';
 import { EmptyList } from './EmptyList';
 

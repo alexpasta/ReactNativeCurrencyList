@@ -1,11 +1,11 @@
+import { CurrencyFilter } from 'app/components/CurrencyFilter';
+import { CurrencyList } from 'app/components/CurrencyList';
+import { FloatingActionMenu } from 'app/components/FloatingActionMenu';
+import { SearchBar } from 'app/components/SearchBar';
+import { useCurrencyStore } from 'app/store/currencyStore';
 import React, { useEffect } from 'react';
 import { BackHandler, Keyboard, KeyboardAvoidingView, Platform, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { CurrencyFilter } from '../components/CurrencyFilter';
-import { CurrencyList } from '../components/CurrencyList';
-import { FloatingActionMenu } from '../components/FloatingActionMenu';
-import { SearchBar } from '../components/SearchBar';
-import { useCurrencyStore } from '../store/currencyStore';
 
 export const DemoScreen: React.FC = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
