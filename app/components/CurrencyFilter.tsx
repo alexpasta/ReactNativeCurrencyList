@@ -1,0 +1,93 @@
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import { Chip } from 'react-native-paper';
+import { CurrencyFilter as FilterType } from '../store/currencyStore';
+
+type Props = {
+  currentFilter: FilterType;
+  onFilterChange: (filter: FilterType) => void;
+};
+
+export const CurrencyFilter: React.FC<Props> = ({
+  currentFilter,
+  onFilterChange,
+}) => {
+  return (
+    <View style={styles.container}>
+      <Chip
+        selected={currentFilter === 'all'}
+        onPress={() => onFilterChange('all')}
+        icon="view-list"
+        mode="outlined"
+        compact
+        style={[
+          styles.chip,
+          currentFilter === 'all' && styles.chipSelected
+        ]}
+        textStyle={[
+          styles.chipText,
+          currentFilter === 'all' && styles.chipTextSelected
+        ]}
+      >
+        All
+      </Chip>
+      
+      <Chip
+        selected={currentFilter === 'crypto'}
+        onPress={() => onFilterChange('crypto')}
+        icon="currency-btc"
+        mode="outlined"
+        compact
+        style={[
+          styles.chip,
+          currentFilter === 'crypto' && styles.chipSelected
+        ]}
+        textStyle={[
+          styles.chipText,
+          currentFilter === 'crypto' && styles.chipTextSelected
+        ]}
+      >
+        Crypto
+      </Chip>
+      
+      <Chip
+        selected={currentFilter === 'fiat'}
+        onPress={() => onFilterChange('fiat')}
+        icon="cash"
+        mode="outlined"
+        compact
+        style={[
+          styles.chip,
+          currentFilter === 'fiat' && styles.chipSelected
+        ]}
+        textStyle={[
+          styles.chipText,
+          currentFilter === 'fiat' && styles.chipTextSelected
+        ]}
+      >
+        Fiat
+      </Chip>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    padding: 16,
+    gap: 8,
+  },
+  chip: {
+    backgroundColor: '#F5F5F5',
+    borderRadius: 16,
+  },
+  chipSelected: {
+    backgroundColor: '#BBBBBB',
+  },
+  chipText: {
+    color: '#666',
+  },
+  chipTextSelected: {
+    color: '#FFFFFF',
+  },
+}); 

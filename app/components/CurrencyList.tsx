@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlatList, ListRenderItemInfo, StyleSheet } from 'react-native';
 import { CurrencyInfo } from '../models/CurrencyInfo';
-import { filterCurrencyList } from '../utils/currencyFilter';
+import { searchCurrencies } from '../utils/currencySearch';
 import { CurrencyListItem } from './CurrencyListItem';
 import { EmptyList } from './EmptyList';
 
@@ -17,7 +17,7 @@ export const CurrencyList: React.FC<Props> = ({
   onItemPress 
 }) => {
   const filteredData = React.useMemo(
-    () => filterCurrencyList(data, searchTerm),
+    () => searchCurrencies(data, searchTerm),
     [data, searchTerm]
   );
 
