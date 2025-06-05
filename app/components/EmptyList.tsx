@@ -1,3 +1,4 @@
+import { MaterialIcons } from '@expo/vector-icons';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
@@ -6,10 +7,13 @@ type Props = {
 };
 
 export const EmptyList: React.FC<Props> = ({ 
-  message = 'No currencies found' 
+  message = 'No Results'
 }) => {
   return (
     <View style={styles.container}>
+      <View style={styles.iconContainer}>
+        <MaterialIcons name="search-off" size={48} color="#ccc" />
+      </View>
       <Text style={styles.text}>{message}</Text>
     </View>
   );
@@ -21,6 +25,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
+  },
+  iconContainer: {
+    marginBottom: 16,
   },
   text: {
     fontSize: 16,
