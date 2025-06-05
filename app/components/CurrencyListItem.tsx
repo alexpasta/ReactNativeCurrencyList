@@ -28,7 +28,7 @@ export const CurrencyListItem: React.FC<Props> = ({ item, onPress }) => {
         <View style={styles.rightContainer}>
           <View style={styles.symbolContainer}>
             <Text style={styles.symbol}>{item.symbol}</Text>
-            {item.code && <Text style={styles.code}>{item.code}</Text>}
+            {item.code && <Text style={styles.symbol}>{item.code}</Text>}
           </View>
           <MaterialIcons name="chevron-right" size={20} color="#999" />
         </View>
@@ -84,11 +84,5 @@ const styles = StyleSheet.create({
   symbol: {
     fontSize: 14,
     color: '#6b7280',
-    marginRight: 4,
-  },
-  code: {
-    fontSize: 12,
-    color: '#666',
-    marginTop: 2,
   },
 }); 
