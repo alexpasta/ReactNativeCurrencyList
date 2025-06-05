@@ -18,6 +18,7 @@ export const CurrencyListItem: React.FC<Props> = ({ item, onPress }) => {
         pressed && styles.pressed
       ]}
       onPress={onPress}
+      testID="currency-list-item"
     >
       <View style={styles.iconCircle}>
         <Text style={styles.iconText}>{initial}</Text>

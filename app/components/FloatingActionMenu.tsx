@@ -28,6 +28,8 @@ export const FloatingActionMenu: React.FC<Props> = ({ actions }) => {
     Animated.spring(animation, {
       toValue: 0,
       useNativeDriver: true,
+      tension: 80,
+      friction: 8,
     }).start();
     setIsOpen(false);
   };
@@ -63,6 +65,7 @@ export const FloatingActionMenu: React.FC<Props> = ({ actions }) => {
         <Pressable 
           style={styles.backdropPressable}
           onPress={closeMenu}
+          testID="fab-backdrop"
         />
       </Animated.View>
 
@@ -84,6 +87,7 @@ export const FloatingActionMenu: React.FC<Props> = ({ actions }) => {
                 pointerEvents: isOpen ? 'auto' : 'none'
               }
             ]}
+            testID="fab-item-container"
           >
             <TouchableOpacity 
               style={[
@@ -94,6 +98,9 @@ export const FloatingActionMenu: React.FC<Props> = ({ actions }) => {
                 action.onPress();
                 closeMenu();
               }}
+              testID="fab-item"
+              accessible={isOpen}
+              aria-hidden={!isOpen}
             >
               <Text style={styles.fabItemText}>{action.label}</Text>
             </TouchableOpacity>
@@ -106,6 +113,7 @@ export const FloatingActionMenu: React.FC<Props> = ({ actions }) => {
         style={styles.fab} 
         onPress={toggleMenu}
         activeOpacity={0.8}
+        testID="fab-main"
       >
         <Animated.View style={{ transform: [{ rotate: rotation }] }}>
           <Text style={styles.fabText}>+</Text>
