@@ -1,9 +1,9 @@
+import { CurrencyListItem } from 'app/components/CurrencyListItem';
+import { EmptyList } from 'app/components/EmptyList';
 import { CurrencyInfo } from 'app/models/CurrencyInfo';
 import { searchCurrencies } from 'app/utils/currencySearch';
 import React from 'react';
 import { FlatList, ListRenderItemInfo, StyleSheet } from 'react-native';
-import { CurrencyListItem } from './CurrencyListItem';
-import { EmptyList } from './EmptyList';
 
 type Props = {
   data: CurrencyInfo[];
