@@ -1,9 +1,7 @@
-import { MaterialIcons } from '@expo/vector-icons';
 import React, { useRef, useState } from 'react';
 import { Animated, Pressable, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 type ActionItem = {
-  icon: string;
   label: string;
   onPress: () => void;
   color?: string;
@@ -97,7 +95,6 @@ export const FloatingActionMenu: React.FC<Props> = ({ actions }) => {
                 closeMenu();
               }}
             >
-              <MaterialIcons name={action.icon} size={24} color="white" />
               <Text style={styles.fabItemText}>{action.label}</Text>
             </TouchableOpacity>
           </Animated.View>
@@ -111,7 +108,7 @@ export const FloatingActionMenu: React.FC<Props> = ({ actions }) => {
         activeOpacity={0.8}
       >
         <Animated.View style={{ transform: [{ rotate: rotation }] }}>
-          <MaterialIcons name="add" size={24} color="white" />
+          <Text style={styles.fabText}>+</Text>
         </Animated.View>
       </TouchableOpacity>
     </>
@@ -147,6 +144,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
   },
+  fabText: {
+    fontSize: 24,
+    color: 'white',
+    fontWeight: 'bold',
+  },
   fabItem: {
     position: 'absolute',
     right: 24,
@@ -171,7 +173,6 @@ const styles = StyleSheet.create({
   },
   fabItemText: {
     color: 'white',
-    marginLeft: 8,
     fontSize: 14,
     fontWeight: '600',
   },

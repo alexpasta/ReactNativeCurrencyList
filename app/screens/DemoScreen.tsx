@@ -39,22 +39,19 @@ export const DemoScreen: React.FC = () => {
 
   const fabActions = [
     {
-      icon: 'delete',
       label: 'Clear Data',
       onPress: clearCurrencies,
-      color: '#FF3B30',
+      color: '#007AFF',
     },
     {
-      icon: 'add',
       label: 'Add Random Currency',
       onPress: insertRandomCurrency,
-      color: '#FF3B30',
+      color: '#007AFF',
     },
     {
-      icon: 'refresh',
       label: 'Reset Data',
       onPress: resetData,
-      color: '#FF3B30',
+      color: '#007AFF',
     },
   ];
 
