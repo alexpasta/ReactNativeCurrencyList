@@ -24,7 +24,7 @@ export const CurrencyList: React.FC<Props> = ({
   const renderItem = ({ item }: ListRenderItemInfo<CurrencyInfo>) => (
     <CurrencyListItem 
       item={item} 
-      onPress={() => onItemPress?.(item)}
+      onPress={onItemPress}
     />
   );
 

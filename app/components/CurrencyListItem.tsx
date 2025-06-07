@@ -5,10 +5,10 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 type Props = {
   item: CurrencyInfo;
-  onPress?: () => void;
+  onPress?: (item: CurrencyInfo) => void;
 };
 
-export const CurrencyListItem: React.FC<Props> = ({ item, onPress }) => {
+const CurrencyListItemComponent: React.FC<Props> = ({ item, onPress }) => {
   const initial = item.name.charAt(0).toUpperCase();
 
   return (
@@ -17,7 +17,7 @@ export const CurrencyListItem: React.FC<Props> = ({ item, onPress }) => {
         styles.container,
         pressed && styles.pressed
       ]}
-      onPress={onPress}
+      onPress={() => onPress?.(item)}
       testID="currency-list-item"
     >
       <View style={styles.iconCircle}>
@@ -37,6 +37,16 @@ export const CurrencyListItem: React.FC<Props> = ({ item, onPress }) => {
     </Pressable>
   );
 };
+
+export const CurrencyListItem = React.memo(CurrencyListItemComponent, (prevProps, nextProps) => {
+  return (
+    prevProps.item.id === nextProps.item.id &&
+    prevProps.item.name === nextProps.item.name &&
+    prevProps.item.symbol === nextProps.item.symbol &&
+    prevProps.item.code === nextProps.item.code &&
+    prevProps.onPress === nextProps.onPress
+  );
+});
 
 const styles = StyleSheet.create({
   container: {

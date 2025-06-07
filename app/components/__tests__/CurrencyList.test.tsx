@@ -13,8 +13,8 @@ jest.mock('../EmptyList', () => {
 jest.mock('../CurrencyListItem', () => {
   const { View, Text, Pressable } = jest.requireActual('react-native');
   return {
-    CurrencyListItem: ({ item, onPress }: { item: CurrencyInfo; onPress?: () => void }) => (
-      <Pressable testID="currency-item" onPress={onPress}>
+    CurrencyListItem: ({ item, onPress }: { item: CurrencyInfo; onPress?: (item: CurrencyInfo) => void }) => (
+      <Pressable testID="currency-item" onPress={() => onPress?.(item)}>
         <View>
           <Text>{item.name}</Text>
         </View>

@@ -8,7 +8,7 @@ type Props = {
   onFilterChange: (filter: FilterType) => void;
 };
 
-export const CurrencyFilter: React.FC<Props> = ({
+const CurrencyFilterComponent: React.FC<Props> = ({
   currentFilter,
   onFilterChange,
 }) => {
@@ -70,6 +70,8 @@ export const CurrencyFilter: React.FC<Props> = ({
     </View>
   );
 };
+
+export const CurrencyFilter = React.memo(CurrencyFilterComponent);
 
 const styles = StyleSheet.create({
   container: {
