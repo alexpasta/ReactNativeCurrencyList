@@ -37,7 +37,7 @@ export const DemoScreen: React.FC = () => {
     return () => subscription.remove();
   }, [searchTerm]);
 
-  const fabActions = [
+  const fabActions = React.useMemo(() => [
     {
       label: 'Clear Data',
       onPress: clearCurrencies,
@@ -53,7 +53,7 @@ export const DemoScreen: React.FC = () => {
       onPress: resetData,
       color: '#007AFF',
     },
-  ];
+  ], [clearCurrencies, insertRandomCurrency, resetData]);
 
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
