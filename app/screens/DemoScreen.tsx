@@ -2,6 +2,7 @@ import { CurrencyFilter } from 'app/components/CurrencyFilter';
 import { CurrencyList } from 'app/components/CurrencyList';
 import { FloatingActionMenu } from 'app/components/FloatingActionMenu';
 import { SearchBar } from 'app/components/SearchBar';
+import { strings } from 'app/constants/strings';
 import { useCurrencyStore } from 'app/store/currencyStore';
 import React, { useEffect } from 'react';
 import { BackHandler, Keyboard, KeyboardAvoidingView, Platform, StyleSheet } from 'react-native';
@@ -39,17 +40,17 @@ export const DemoScreen: React.FC = () => {
 
   const fabActions = React.useMemo(() => [
     {
-      label: 'Clear Data',
+      label: strings.clearData,
       onPress: clearCurrencies,
       color: '#007AFF',
     },
     {
-      label: 'Add Random Currency',
+      label: strings.addRandomCurrency,
       onPress: insertRandomCurrency,
       color: '#007AFF',
     },
     {
-      label: 'Reset Data',
+      label: strings.resetData,
       onPress: resetData,
       color: '#007AFF',
     },

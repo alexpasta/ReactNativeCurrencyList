@@ -1,4 +1,5 @@
 import { MaterialIcons } from '@expo/vector-icons';
+import { strings } from 'app/constants/strings';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
@@ -7,7 +8,7 @@ type Props = {
 };
 
 export const EmptyList: React.FC<Props> = ({ 
-  message = 'No Results'
+  message = strings.noResults
 }) => {
   return (
     <View style={styles.container}>

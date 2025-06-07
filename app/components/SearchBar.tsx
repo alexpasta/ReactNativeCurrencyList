@@ -1,3 +1,4 @@
+import { strings } from 'app/constants/strings';
 import React from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
@@ -12,7 +13,7 @@ export const SearchBar: React.FC<Props> = ({
   value,
   onChangeText,
   onClear,
-  placeholder = 'Search currencies...',
+  placeholder = strings.searchPlaceholder,
 }) => {
   return (
     <View style={styles.container}>
@@ -25,7 +26,7 @@ export const SearchBar: React.FC<Props> = ({
       />
       {value.length > 0 && (
         <TouchableOpacity onPress={onClear} style={styles.clearButton}>
-          <Text style={styles.clearButtonText}>✕</Text>
+          <Text style={styles.clearButtonText}>{strings.close}</Text>
         </TouchableOpacity>
       )}
     </View>

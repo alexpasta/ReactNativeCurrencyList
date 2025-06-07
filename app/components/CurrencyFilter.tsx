@@ -1,3 +1,4 @@
+import { strings } from 'app/constants/strings';
 import { CurrencyFilter as FilterType } from 'app/store/currencyStore';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
@@ -29,7 +30,7 @@ const CurrencyFilterComponent: React.FC<Props> = ({
           currentFilter === 'all' && styles.chipTextSelected
         ]}
       >
-        All
+        {strings.filterAll}
       </Chip>
       
       <Chip
@@ -47,7 +48,7 @@ const CurrencyFilterComponent: React.FC<Props> = ({
           currentFilter === 'crypto' && styles.chipTextSelected
         ]}
       >
-        Crypto
+        {strings.filterCrypto}
       </Chip>
       
       <Chip
@@ -65,7 +66,7 @@ const CurrencyFilterComponent: React.FC<Props> = ({
           currentFilter === 'fiat' && styles.chipTextSelected
         ]}
       >
-        Fiat
+        {strings.filterFiat}
       </Chip>
     </View>
   );
