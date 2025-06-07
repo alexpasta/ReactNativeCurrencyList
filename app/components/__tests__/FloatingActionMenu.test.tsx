@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/react-native';
 import React from 'react';
-import { FloatingActionMenu } from '../FloatingActionMenu';
+import FloatingActionMenu from '../FloatingActionMenu';
 
 describe('FloatingActionMenu', () => {
   const mockActions = [

@@ -1,14 +1,14 @@
-import { CurrencyFilter } from 'app/components/CurrencyFilter';
-import { CurrencyList } from 'app/components/CurrencyList';
-import { FloatingActionMenu } from 'app/components/FloatingActionMenu';
-import { SearchBar } from 'app/components/SearchBar';
+import CurrencyFilter from 'app/components/CurrencyFilter';
+import CurrencyList from 'app/components/CurrencyList';
+import FloatingActionMenu from 'app/components/FloatingActionMenu';
+import SearchBar from 'app/components/SearchBar';
 import { strings } from 'app/constants/strings';
 import { useCurrencyStore } from 'app/store/currencyStore';
 import React, { useEffect } from 'react';
 import { BackHandler, Keyboard, KeyboardAvoidingView, Platform, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-export const DemoScreen: React.FC = () => {
+const DemoScreen: React.FC = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
   
   const {
@@ -94,3 +94,5 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
 }); 
+
+export default DemoScreen;

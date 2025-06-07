@@ -11,7 +11,7 @@ type Props = {
   actions: ActionItem[];
 };
 
-export const FloatingActionMenuComponent: React.FC<Props> = ({ actions }) => {
+const FloatingActionMenuComponent: React.FC<Props> = ({ actions }) => {
   const [isOpen, setIsOpen] = useState(false);
   const animation = useRef(new Animated.Value(0)).current;
 
@@ -123,7 +123,7 @@ export const FloatingActionMenuComponent: React.FC<Props> = ({ actions }) => {
   );
 };
 
-export const FloatingActionMenu = React.memo(FloatingActionMenuComponent);
+const FloatingActionMenu = React.memo(FloatingActionMenuComponent);
 
 const styles = StyleSheet.create({
   backdrop: {
@@ -186,4 +186,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '600',
   },
-}); 
+});
+
+export default FloatingActionMenu;

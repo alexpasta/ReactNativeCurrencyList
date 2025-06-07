@@ -1,26 +1,22 @@
 import { fireEvent, render } from '@testing-library/react-native';
 import { CurrencyInfo } from 'app/models/CurrencyInfo';
 import React from 'react';
-import { CurrencyList } from '../CurrencyList';
+import CurrencyList from '../CurrencyList';
 
 jest.mock('../EmptyList', () => {
   const { View } = jest.requireActual('react-native');
-  return {
-    EmptyList: () => <View testID="empty-list" />
-  };
+  return () => <View testID="empty-list" />;
 });
 
 jest.mock('../CurrencyListItem', () => {
   const { View, Text, Pressable } = jest.requireActual('react-native');
-  return {
-    CurrencyListItem: ({ item, onPress }: { item: CurrencyInfo; onPress?: (item: CurrencyInfo) => void }) => (
-      <Pressable testID="currency-item" onPress={() => onPress?.(item)}>
-        <View>
-          <Text>{item.name}</Text>
-        </View>
-      </Pressable>
-    )
-  };
+  return ({ item, onPress }: { item: CurrencyInfo; onPress?: (item: CurrencyInfo) => void }) => (
+    <Pressable testID="currency-item" onPress={() => onPress?.(item)}>
+      <View>
+        <Text>{item.name}</Text>
+      </View>
+    </Pressable>
+  );
 });
 
 jest.mock('app/utils/currencySearch', () => ({

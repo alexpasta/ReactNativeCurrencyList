@@ -1,12 +1,12 @@
 import { strings } from 'app/constants/strings';
-import { CurrencyFilter as FilterType } from 'app/store/currencyStore';
+import { CurrencyFilterType } from 'app/store/currencyStore';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Chip } from 'react-native-paper';
 
 type Props = {
-  currentFilter: FilterType;
-  onFilterChange: (filter: FilterType) => void;
+  currentFilter: CurrencyFilterType;
+  onFilterChange: (filter: CurrencyFilterType) => void;
 };
 
 const CurrencyFilterComponent: React.FC<Props> = ({
@@ -72,7 +72,7 @@ const CurrencyFilterComponent: React.FC<Props> = ({
   );
 };
 
-export const CurrencyFilter = React.memo(CurrencyFilterComponent);
+const CurrencyFilter = React.memo(CurrencyFilterComponent);
 
 const styles = StyleSheet.create({
   container: {
@@ -93,4 +93,6 @@ const styles = StyleSheet.create({
   chipTextSelected: {
     color: '#FFFFFF',
   },
-}); 
+});
+
+export default CurrencyFilter;

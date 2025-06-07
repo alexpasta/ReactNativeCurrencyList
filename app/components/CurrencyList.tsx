@@ -1,5 +1,5 @@
-import { CurrencyListItem } from 'app/components/CurrencyListItem';
-import { EmptyList } from 'app/components/EmptyList';
+import CurrencyListItem from 'app/components/CurrencyListItem';
+import EmptyList from 'app/components/EmptyList';
 import { CurrencyInfo } from 'app/models/CurrencyInfo';
 import { searchCurrencies } from 'app/utils/currencySearch';
 import React from 'react';
@@ -11,7 +11,7 @@ type Props = {
   onItemPress?: (item: CurrencyInfo) => void;
 };
 
-export const CurrencyList: React.FC<Props> = ({ 
+const CurrencyList: React.FC<Props> = ({ 
   data, 
   searchTerm = '',
   onItemPress 
@@ -55,3 +55,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 }); 
+
+export default CurrencyList;

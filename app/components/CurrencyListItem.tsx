@@ -38,7 +38,7 @@ const CurrencyListItemComponent: React.FC<Props> = ({ item, onPress }) => {
   );
 };
 
-export const CurrencyListItem = React.memo(CurrencyListItemComponent, (prevProps, nextProps) => {
+const CurrencyListItem = React.memo(CurrencyListItemComponent, (prevProps, nextProps) => {
   return (
     prevProps.item.id === nextProps.item.id &&
     prevProps.item.name === nextProps.item.name &&
@@ -96,4 +96,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#6b7280',
   },
-}); 
+});
+
+export default CurrencyListItem;

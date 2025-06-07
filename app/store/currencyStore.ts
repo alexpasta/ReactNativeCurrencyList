@@ -5,12 +5,12 @@ import { filterCurrencies } from 'app/utils/currencyUtils';
 import { storage } from 'app/utils/storage';
 import { create } from 'zustand';
 
-export type CurrencyFilter = 'all' | 'crypto' | 'fiat';
+export type CurrencyFilterType = 'all' | 'crypto' | 'fiat';
 
 interface CurrencyStore {
   // State
   rawCurrencies: CurrencyInfo[];
-  filter: CurrencyFilter;
+  filter: CurrencyFilterType;
   currencies: CurrencyInfo[];
   isLoading: boolean;
   
@@ -18,7 +18,7 @@ interface CurrencyStore {
   clearCurrencies: () => void;
   insertRandomCurrency: () => void;
   resetData: () => void;
-  setFilter: (filter: CurrencyFilter) => void;
+  setFilter: (filter: CurrencyFilterType) => void;
   initializeStore: () => Promise<void>;
 }
 

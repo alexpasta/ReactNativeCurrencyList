@@ -7,7 +7,7 @@ type Props = {
   message?: string;
 };
 
-export const EmptyList: React.FC<Props> = ({ 
+const EmptyList: React.FC<Props> = ({ 
   message = strings.noResults
 }) => {
   return (
@@ -34,4 +34,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#666',
   },
-}); 
+});
+
+export default EmptyList;

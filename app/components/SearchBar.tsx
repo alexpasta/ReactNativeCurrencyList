@@ -9,7 +9,7 @@ type Props = {
   placeholder?: string;
 };
 
-export const SearchBar: React.FC<Props> = ({
+const SearchBar: React.FC<Props> = ({
   value,
   onChangeText,
   onClear,
@@ -57,3 +57,5 @@ const styles = StyleSheet.create({
     color: '#999',
   },
 }); 
+
+export default SearchBar;
