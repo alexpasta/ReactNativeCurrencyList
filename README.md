@@ -62,6 +62,41 @@ type Props = {
 * Can filter the data by a search keyword 
 * Fully controlled via parent (search logic is not handled internally)
 
+### Data Format
+
+#### CurrencyInfo
+
+```ts
+type CurrencyInfo = {
+  id: string
+  name: string
+  symbol: string
+  code?: string // Optional, for fiat currencies only
+}
+```
+
+#### Sample Data
+
+##### Currency List A - Crypto
+
+```json
+[
+  { "id": "BTC", "name": "Bitcoin", "symbol": "BTC" },
+  { "id": "ETH", "name": "Ethereum", "symbol": "ETH" },
+  { "id": "XRP", "name": "XRP", "symbol": "XRP" }
+]
+```
+
+##### Currency List B - Fiat
+
+```json
+[
+  { "id": "SGD", "name": "Singapore Dollar", "symbol": "$", "code": "SGD" },
+  { "id": "EUR", "name": "Euro", "symbol": "€", "code": "EUR" },
+  { "id": "GBP", "name": "British Pound", "symbol": "£", "code": "GBP" }
+]
+```
+
 ---
 
 ## DemoScreen Functionalities
@@ -85,40 +120,13 @@ Includes a **search bar** above the list, which:
 * Filters the list using the matching rules above
 * Allows cancelling the search via back/clear buttons
 
----
+### Demo
+| normal state | searching state |
+| ------------ | --------------- |
+| <img src="https://github.com/alexpasta/ReactNativeCurrencyList/blob/main/demo/normal_state.png" width=300> | <img src="https://github.com/alexpasta/ReactNativeCurrencyList/blob/main/demo/searching_state.png" width=300> | 
 
-## Data Format
+| empty state | empty searching state |
+| ----------- | --------------------- |
+| <img src="https://github.com/alexpasta/ReactNativeCurrencyList/blob/main/demo/empty_state.png" width=300> | <img src="https://github.com/alexpasta/ReactNativeCurrencyList/blob/main/demo/empty_searching_state.png" width=300> | 
 
-### `CurrencyInfo`
-
-```ts
-type CurrencyInfo = {
-  id: string
-  name: string
-  symbol: string
-  code?: string // Optional, for fiat currencies only
-}
-```
-
-### Sample Data
-
-#### Currency List A - Crypto
-
-```json
-[
-  { "id": "BTC", "name": "Bitcoin", "symbol": "BTC" },
-  { "id": "ETH", "name": "Ethereum", "symbol": "ETH" },
-  { "id": "XRP", "name": "XRP", "symbol": "XRP" }
-]
-```
-
-#### Currency List B - Fiat
-
-```json
-[
-  { "id": "SGD", "name": "Singapore Dollar", "symbol": "$", "code": "SGD" },
-  { "id": "EUR", "name": "Euro", "symbol": "€", "code": "EUR" },
-  { "id": "GBP", "name": "British Pound", "symbol": "£", "code": "GBP" }
-]
-```
 
