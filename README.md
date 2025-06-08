@@ -19,8 +19,10 @@ A reusable `CurrencyList` component, designed to display and filter both Crypto 
 ## Tech Stack
 
 * **React Native**
+* **Expo**
 * **TypeScript**
 * **Zustand** for state management
+* **React Native Papaer** for Material Design UI components
 * **AsyncStorage** for persistent storage
 * **Jest** for unit testing
 
@@ -40,6 +42,7 @@ app/
 │   └── CurrencyInfo.ts          # Type definition for currency data
 ├── utils/
 │   └── storage.ts               # AsyncStorage wrapper for data persistence
+│   └── currencySearch.ts        # Helper functions for currency search
 ```
 
 ---
@@ -121,12 +124,10 @@ Includes a **search bar** above the list, which:
 * Allows cancelling the search via back/clear buttons
 
 ### Demo
-| normal state | searching state |
+| empty state | normal state |
 | ------------ | --------------- |
-| <img src="https://github.com/alexpasta/ReactNativeCurrencyList/blob/main/demo/normal_state.png" width=300> | <img src="https://github.com/alexpasta/ReactNativeCurrencyList/blob/main/demo/searching_state.png" width=300> | 
+| <img src="https://github.com/alexpasta/ReactNativeCurrencyList/blob/main/demo/empty_state.png" width=300> | <img src="https://github.com/alexpasta/ReactNativeCurrencyList/blob/main/demo/normal_state.png" width=300> | 
 
-| empty state | empty searching state |
+| empty searching state | searching state |
 | ----------- | --------------------- |
-| <img src="https://github.com/alexpasta/ReactNativeCurrencyList/blob/main/demo/empty_state.png" width=300> | <img src="https://github.com/alexpasta/ReactNativeCurrencyList/blob/main/demo/empty_searching_state.png" width=300> | 
-
-
+| <img src="https://github.com/alexpasta/ReactNativeCurrencyList/blob/main/demo/empty_searching_state.png" width=300> | <img src="https://github.com/alexpasta/ReactNativeCurrencyList/blob/main/demo/searching_state.png" width=300> | 
