@@ -124,9 +124,9 @@ Includes a **search bar** above the list, which:
 * Allows cancelling the search via back/clear buttons
 
 ### Demo
-| empty state | normal state |
-| ------------ | --------------- |
-| <img src="https://github.com/alexpasta/ReactNativeCurrencyList/blob/main/demo/empty_state.png" width=300> | <img src="https://github.com/alexpasta/ReactNativeCurrencyList/blob/main/demo/normal_state.png" width=300> | 
+| empty state | normal state | floating action menu |
+| ------------ | --------------- | --------------- |
+| <img src="https://github.com/alexpasta/ReactNativeCurrencyList/blob/main/demo/empty_state.png" width=300> | <img src="https://github.com/alexpasta/ReactNativeCurrencyList/blob/main/demo/normal_state.png" width=300> | <img src="https://github.com/alexpasta/ReactNativeCurrencyList/blob/main/demo/floating_action_menu.png" width=300> | 
 
 | empty searching state | searching state |
 | ----------- | --------------------- |
