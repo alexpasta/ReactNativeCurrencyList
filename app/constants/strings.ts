@@ -5,6 +5,7 @@ export const strings = {
   
   // Empty List
   noResults: 'No Results',
+  searchHint: (suggestion: string) => `Try "${suggestion}"`,
   
   // Currency Filter
   filterAll: 'All',

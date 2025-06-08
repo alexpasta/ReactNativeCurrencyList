@@ -1,5 +1,5 @@
 import { CurrencyInfo } from 'app/models/CurrencyInfo';
-import { searchCurrencies } from '../currencySearch';
+import { getSearchHint, searchCurrencies } from '../currencySearch';
 
 describe('searchCurrencies', () => {
   const mockCurrencies: CurrencyInfo[] = [
@@ -66,5 +66,63 @@ describe('searchCurrencies', () => {
   it('should return empty array when no matches found', () => {
     const result = searchCurrencies(mockCurrencies, 'xyz');
     expect(result).toHaveLength(0);
+  });
+});
+
+describe('getSearchHint', () => {
+  const mockCurrencies: CurrencyInfo[] = [
+    {
+      id: '1',
+      name: 'United States Dollar',
+      symbol: '$',
+      code: 'USD'
+    },
+    {
+      id: '2',
+      name: 'Euro',
+      symbol: '€',
+      code: 'EUR'
+    },
+    {
+      id: '3',
+      name: 'Bitcoin',
+      symbol: 'BTC'
+    }
+  ];
+
+  it('should return hint with first currency code when available', () => {
+    const result = getSearchHint(mockCurrencies);
+    expect(result).toBe('Try "USD"');
+  });
+
+  it('should return hint with first currency symbol when no code available', () => {
+    const currenciesWithoutCode: CurrencyInfo[] = [
+      {
+        id: '1',
+        name: 'Bitcoin',
+        symbol: 'BTC'
+      }
+    ];
+    
+    const result = getSearchHint(currenciesWithoutCode);
+    expect(result).toBe('Try "BTC"');
+  });
+
+  it('should return empty string when currencies array is empty', () => {
+    const result = getSearchHint([]);
+    expect(result).toBe('');
+  });
+
+  it('should return empty string when first currency has no code or symbol', () => {
+    const currenciesWithoutCodeOrSymbol: CurrencyInfo[] = [
+      {
+        id: '1',
+        name: 'Unknown Currency',
+        symbol: ''
+      }
+    ];
+    
+    const result = getSearchHint(currenciesWithoutCodeOrSymbol);
+    expect(result).toBe('');
   });
 }); 

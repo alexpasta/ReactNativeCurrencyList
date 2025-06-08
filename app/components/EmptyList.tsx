@@ -4,18 +4,25 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 type Props = {
-  message?: string;
+  title?: string;
+  description?: string;
 };
 
 const EmptyList: React.FC<Props> = ({ 
-  message = strings.noResults
+  title = strings.noResults,
+  description
 }) => {
   return (
     <View style={styles.container}>
+      <View style={{ flex: 0.3 }} />
+
       <View style={styles.iconContainer}>
         <MaterialIcons name="search-off" size={48} color="#ccc" />
       </View>
-      <Text style={styles.text}>{message}</Text>
+      <Text style={styles.text}>{title}</Text>
+      {description && <Text style={styles.text}>{description}</Text>}
+      
+      <View style={{ flex: 0.7 }} />
     </View>
   );
 };

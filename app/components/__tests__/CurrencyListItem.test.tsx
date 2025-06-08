@@ -3,7 +3,6 @@ import { CurrencyInfo } from 'app/models/CurrencyInfo';
 import React from 'react';
 import CurrencyListItem from '../CurrencyListItem';
 
-// Mock MaterialIcons
 jest.mock('@expo/vector-icons', () => ({
   MaterialIcons: 'MaterialIcons'
 }));

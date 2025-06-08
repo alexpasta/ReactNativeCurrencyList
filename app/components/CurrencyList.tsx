@@ -1,7 +1,7 @@
 import CurrencyListItem from 'app/components/CurrencyListItem';
 import EmptyList from 'app/components/EmptyList';
 import { CurrencyInfo } from 'app/models/CurrencyInfo';
-import { searchCurrencies } from 'app/utils/currencySearch';
+import { getSearchHint, searchCurrencies } from 'app/utils/currencySearch';
 import React from 'react';
 import { FlatList, ListRenderItemInfo, StyleSheet } from 'react-native';
 
@@ -29,7 +29,12 @@ const CurrencyList: React.FC<Props> = ({
   );
 
   if (filteredData.length === 0) {
-    return <EmptyList />;
+    const searchHint = getSearchHint(data);
+    return (
+      <EmptyList
+        description={searchHint} 
+      />
+    );
   }
 
   return (

@@ -1,3 +1,4 @@
+import { strings } from "app/constants/strings";
 import { CurrencyInfo } from "app/models/CurrencyInfo";
 
 export function searchCurrencies(currencies: CurrencyInfo[], searchTerm: string): CurrencyInfo[] {
@@ -10,4 +11,10 @@ export function searchCurrencies(currencies: CurrencyInfo[], searchTerm: string)
     if (currency.code?.toLowerCase().includes(term)) return true;
     return false;
   });
-} 
+}
+
+export function getSearchHint(currencies: CurrencyInfo[]): string {
+  const firstItem = currencies[0];
+  const firstItemDescription = firstItem?.code || firstItem?.symbol || '';
+  return firstItemDescription ? strings.searchHint(firstItemDescription) : '';
+}

@@ -4,8 +4,13 @@ import React from 'react';
 import CurrencyList from '../CurrencyList';
 
 jest.mock('../EmptyList', () => {
-  const { View } = jest.requireActual('react-native');
-  return () => <View testID="empty-list" />;
+  const { View, Text } = jest.requireActual('react-native');
+  return ({ title, description }: { title?: string; description?: string }) => (
+    <View testID="empty-list">
+      {title && <Text testID="empty-title">{title}</Text>}
+      {description && <Text testID="empty-description">{description}</Text>}
+    </View>
+  );
 });
 
 jest.mock('../CurrencyListItem', () => {
@@ -18,11 +23,6 @@ jest.mock('../CurrencyListItem', () => {
     </Pressable>
   );
 });
-
-jest.mock('app/utils/currencySearch', () => ({
-  searchCurrencies: (currencies: CurrencyInfo[], searchTerm: string) => 
-    currencies.filter(c => c.name.toLowerCase().includes(searchTerm.toLowerCase()))
-}));
 
 describe('CurrencyList', () => {
   const mockData: CurrencyInfo[] = [
