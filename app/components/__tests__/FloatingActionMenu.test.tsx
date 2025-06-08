@@ -2,6 +2,10 @@ import { fireEvent, render } from '@testing-library/react-native';
 import React from 'react';
 import FloatingActionMenu from '../FloatingActionMenu';
 
+jest.mock('react-native-safe-area-context', () => ({
+  useSafeAreaInsets: () => 0,
+}));
+
 describe('FloatingActionMenu', () => {
   const mockActions = [
     {

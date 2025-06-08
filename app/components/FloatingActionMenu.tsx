@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Animated, Pressable, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 type ActionItem = {
   label: string;
@@ -14,6 +15,7 @@ type Props = {
 const FloatingActionMenuComponent: React.FC<Props> = ({ actions }) => {
   const [isOpen, setIsOpen] = useState(false);
   const animation = useRef(new Animated.Value(0)).current;
+  const insets = useSafeAreaInsets();
 
   const toggleMenu = () => {
     const toValue = isOpen ? 0 : 1;
@@ -50,6 +52,10 @@ const FloatingActionMenuComponent: React.FC<Props> = ({ actions }) => {
     outputRange: [0, 0, 1],
   });
 
+  // Calculate safe bottom position
+  const fabBottomPosition = insets.bottom + 16;
+  const fabItemBottomPosition = insets.bottom + 24;
+
   return (
     <>
       {/* Backdrop */}
@@ -82,6 +88,7 @@ const FloatingActionMenuComponent: React.FC<Props> = ({ actions }) => {
             style={[
               styles.fabItem, 
               { 
+                bottom: fabItemBottomPosition,
                 transform: [{ translateY }],
                 opacity: buttonOpacity,
                 pointerEvents: isOpen ? 'auto' : 'none'
@@ -110,7 +117,7 @@ const FloatingActionMenuComponent: React.FC<Props> = ({ actions }) => {
 
       {/* Main FAB */}
       <TouchableOpacity 
-        style={styles.fab} 
+        style={[styles.fab, { bottom: fabBottomPosition }]} 
         onPress={toggleMenu}
         activeOpacity={0.8}
         testID="fab-main"
@@ -137,7 +144,6 @@ const styles = StyleSheet.create({
   fab: {
     position: 'absolute',
     right: 16,
-    bottom: 16,
     width: 56,
     height: 56,
     borderRadius: 28,
@@ -162,7 +168,6 @@ const styles = StyleSheet.create({
   fabItem: {
     position: 'absolute',
     right: 24,
-    bottom: 24,
     zIndex: 2,
   },
   fabItemButton: {
