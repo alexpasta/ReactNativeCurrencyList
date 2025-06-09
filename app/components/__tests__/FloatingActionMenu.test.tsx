@@ -3,7 +3,7 @@ import React from 'react';
 import FloatingActionMenu from '../FloatingActionMenu';
 
 jest.mock('react-native-safe-area-context', () => ({
-  useSafeAreaInsets: () => 0,
+  useSafeAreaInsets: () => ({ top: 0, bottom: 0, left: 0, right: 0 }),
 }));
 
 describe('FloatingActionMenu', () => {
