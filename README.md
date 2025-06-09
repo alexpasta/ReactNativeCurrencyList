@@ -101,7 +101,7 @@ A floating action button (FAB) that expands to reveal three actions:
 
 ### Search Functionality
 Includes a **search bar** above the list, which:
-* Filters the list using the matching rules above
+* Filters the list using the input string
 * Allows cancelling the search via back/clear buttons
 
 ### Demo
