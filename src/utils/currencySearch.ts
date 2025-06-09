@@ -1,5 +1,5 @@
-import { strings } from "app/constants/strings";
-import { CurrencyInfo } from "app/models/CurrencyInfo";
+import { strings } from "src/constants/strings";
+import { CurrencyInfo } from "src/models/CurrencyInfo";
 
 export function searchCurrencies(currencies: CurrencyInfo[], searchTerm: string): CurrencyInfo[] {
   if (!searchTerm) return currencies;

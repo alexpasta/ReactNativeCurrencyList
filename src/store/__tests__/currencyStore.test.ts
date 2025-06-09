@@ -1,17 +1,17 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import { CurrencyInfo } from 'app/models/CurrencyInfo';
-import { INITIAL_DATA } from 'app/models/sampleData';
-import { storage } from 'app/utils/storage';
+import { CurrencyInfo } from 'src/models/CurrencyInfo';
+import { INITIAL_DATA } from 'src/models/sampleData';
+import { storage } from 'src/utils/storage';
 import { useCurrencyStore } from '../currencyStore';
 
-jest.mock('app/utils/storage', () => ({
+jest.mock('src/utils/storage', () => ({
   storage: {
     saveCurrencies: jest.fn(),
     loadCurrencies: jest.fn(),
   },
 }));
 
-jest.mock('app/utils/currencyGenerator', () => ({
+jest.mock('src/utils/currencyGenerator', () => ({
   generateRandomCurrency: () => ({
     id: 'MOCK',
     name: 'Mock Currency',

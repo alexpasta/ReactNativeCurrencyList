@@ -1,4 +1,4 @@
-import { CurrencyInfo } from 'app/models/CurrencyInfo';
+import { CurrencyInfo } from 'src/models/CurrencyInfo';
 import { getSearchHint, searchCurrencies } from '../currencySearch';
 
 describe('searchCurrencies', () => {

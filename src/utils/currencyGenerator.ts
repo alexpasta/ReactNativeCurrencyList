@@ -1,4 +1,4 @@
-import { CurrencyInfo } from 'app/models/CurrencyInfo';
+import { CurrencyInfo } from 'src/models/CurrencyInfo';
 
 // Helper data for random generation
 const CURRENCY_SYMBOLS = ['$', '€', '£', '¥', '₹', '₪', '₩', '₴', '₽'];

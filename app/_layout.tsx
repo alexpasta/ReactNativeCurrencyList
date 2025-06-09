@@ -2,7 +2,7 @@ import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { useCurrencyStore } from './store/currencyStore';
+import { useCurrencyStore } from 'src/store/currencyStore';
 
 
 export default function RootLayout() {

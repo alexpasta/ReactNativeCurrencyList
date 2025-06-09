@@ -1,5 +1,5 @@
 import { MaterialIcons } from '@expo/vector-icons';
-import { CurrencyInfo } from 'app/models/CurrencyInfo';
+import { CurrencyInfo } from 'src/models/CurrencyInfo';
 import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 

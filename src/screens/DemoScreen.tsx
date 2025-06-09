@@ -1,9 +1,9 @@
-import CurrencyFilter from 'app/components/CurrencyFilter';
-import CurrencyList from 'app/components/CurrencyList';
-import FloatingActionMenu from 'app/components/FloatingActionMenu';
-import SearchBar from 'app/components/SearchBar';
-import { strings } from 'app/constants/strings';
-import { useCurrencyStore } from 'app/store/currencyStore';
+import CurrencyFilter from 'src/components/CurrencyFilter';
+import CurrencyList from 'src/components/CurrencyList';
+import FloatingActionMenu from 'src/components/FloatingActionMenu';
+import SearchBar from 'src/components/SearchBar';
+import { strings } from 'src/constants/strings';
+import { useCurrencyStore } from 'src/store/currencyStore';
 import React, { useEffect } from 'react';
 import { BackHandler, Keyboard, KeyboardAvoidingView, Platform, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';

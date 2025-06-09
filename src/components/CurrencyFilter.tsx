@@ -1,5 +1,5 @@
-import { strings } from 'app/constants/strings';
-import { CurrencyFilterType } from 'app/store/currencyStore';
+import { strings } from 'src/constants/strings';
+import { CurrencyFilterType } from 'src/store/currencyStore';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Chip } from 'react-native-paper';

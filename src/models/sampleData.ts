@@ -1,4 +1,4 @@
-import { CurrencyInfo } from 'app/models/CurrencyInfo';
+import { CurrencyInfo } from 'src/models/CurrencyInfo';
 
 // Sample crypto currencies
 export const CRYPTO_CURRENCIES: CurrencyInfo[] = [

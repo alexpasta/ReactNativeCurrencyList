@@ -1,5 +1,5 @@
 import { fireEvent, render } from '@testing-library/react-native';
-import { CurrencyInfo } from 'app/models/CurrencyInfo';
+import { CurrencyInfo } from 'src/models/CurrencyInfo';
 import React from 'react';
 import CurrencyListItem from '../CurrencyListItem';
 

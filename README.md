@@ -21,29 +21,10 @@ A reusable `CurrencyList` component, designed to display and filter both Crypto 
 * **React Native**
 * **Expo**
 * **TypeScript**
-* **Zustand** for state management
-* **React Native Papaer** for Material Design UI components
-* **AsyncStorage** for persistent storage
-* **Jest** for unit testing
-
----
-
-## Project Structure (only includes main files)
-
-```
-app/
-├── components/
-│   └── CurrencyList.tsx         # Reusable currency list component
-├── screens/
-│   └── DemoScreen.tsx           # Demo view to test and showcase functionality
-├── store/
-│   └── currencyStore.ts         # Zustand-based store with AsyncStorage persistence
-├── models/
-│   └── CurrencyInfo.ts          # Type definition for currency data
-├── utils/
-│   └── storage.ts               # AsyncStorage wrapper for data persistence
-│   └── currencySearch.ts        # Helper functions for currency search
-```
+* **Zustand**: for state management
+* **React Native Papaer**: for Material Design UI components
+* **AsyncStorage**: for persistent storage
+* **Jest**: for unit testing
 
 ---
 

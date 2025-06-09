@@ -1,9 +1,9 @@
-import CurrencyListItem from 'app/components/CurrencyListItem';
-import EmptyList from 'app/components/EmptyList';
-import { CurrencyInfo } from 'app/models/CurrencyInfo';
-import { getSearchHint, searchCurrencies } from 'app/utils/currencySearch';
 import React, { useCallback } from 'react';
 import { FlatList, ListRenderItemInfo, StyleSheet } from 'react-native';
+import CurrencyListItem from 'src/components/CurrencyListItem';
+import EmptyList from 'src/components/EmptyList';
+import { CurrencyInfo } from 'src/models/CurrencyInfo';
+import { getSearchHint, searchCurrencies } from 'src/utils/currencySearch';
 
 type Props = {
   data: CurrencyInfo[];

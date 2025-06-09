@@ -1,5 +1,5 @@
 import { MaterialIcons } from '@expo/vector-icons';
-import { strings } from 'app/constants/strings';
+import { strings } from 'src/constants/strings';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 

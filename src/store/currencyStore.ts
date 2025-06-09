@@ -1,8 +1,8 @@
-import { CurrencyInfo } from 'app/models/CurrencyInfo';
-import { INITIAL_DATA } from 'app/models/sampleData';
-import { generateRandomCurrency } from 'app/utils/currencyGenerator';
-import { filterCurrencies } from 'app/utils/currencyUtils';
-import { storage } from 'app/utils/storage';
+import { CurrencyInfo } from 'src/models/CurrencyInfo';
+import { INITIAL_DATA } from 'src/models/sampleData';
+import { generateRandomCurrency } from 'src/utils/currencyGenerator';
+import { filterCurrencies } from 'src/utils/currencyUtils';
+import { storage } from 'src/utils/storage';
 import { create } from 'zustand';
 
 export type CurrencyFilterType = 'all' | 'crypto' | 'fiat';

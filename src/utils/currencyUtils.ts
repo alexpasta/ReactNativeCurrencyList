@@ -1,5 +1,5 @@
-import { CurrencyInfo } from 'app/models/CurrencyInfo';
-import { CurrencyFilterType } from 'app/store/currencyStore';
+import { CurrencyInfo } from 'src/models/CurrencyInfo';
+import { CurrencyFilterType } from 'src/store/currencyStore';
 
 // Currency type check
 export const isCryptoCurrency = (currency: CurrencyInfo): boolean => {
