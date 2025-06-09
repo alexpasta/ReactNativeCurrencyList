@@ -2,7 +2,7 @@ import CurrencyListItem from 'app/components/CurrencyListItem';
 import EmptyList from 'app/components/EmptyList';
 import { CurrencyInfo } from 'app/models/CurrencyInfo';
 import { getSearchHint, searchCurrencies } from 'app/utils/currencySearch';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { FlatList, ListRenderItemInfo, StyleSheet } from 'react-native';
 
 type Props = {
@@ -21,12 +21,9 @@ const CurrencyList: React.FC<Props> = ({
     [data, searchTerm]
   );
 
-  const renderItem = ({ item }: ListRenderItemInfo<CurrencyInfo>) => (
-    <CurrencyListItem 
-      item={item} 
-      onPress={onItemPress}
-    />
-  );
+  const renderItem = useCallback(({ item }: ListRenderItemInfo<CurrencyInfo>) => (
+    <CurrencyListItem item={item} onPress={onItemPress} />
+  ), [onItemPress]);
 
   if (filteredData.length === 0) {
     const searchHint = getSearchHint(data);
