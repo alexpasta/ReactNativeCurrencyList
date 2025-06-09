@@ -1,4 +1,4 @@
-import { generateRandomCurrency } from '../currencyGenerator';
+import { generateRandomCurrency } from 'src/utils/currencyGenerator';
 
 describe('currencyGenerator', () => {
   describe('generateRandomCurrency', () => {

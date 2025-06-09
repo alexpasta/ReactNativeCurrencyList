@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/react-native';
-import { CurrencyInfo } from 'src/models/CurrencyInfo';
 import React from 'react';
-import CurrencyListItem from '../CurrencyListItem';
+import CurrencyListItem from 'src/components/CurrencyListItem';
+import { CurrencyInfo } from 'src/models/CurrencyInfo';
 
 jest.mock('@expo/vector-icons', () => ({
   MaterialIcons: 'MaterialIcons'

@@ -1,5 +1,5 @@
 import { CurrencyInfo } from 'src/models/CurrencyInfo';
-import { filterCurrencies, isCryptoCurrency } from '../currencyUtils';
+import { filterCurrencies, isCryptoCurrency } from 'src/utils/currencyUtils';
 
 describe('currencyUtils', () => {
   const mockCurrencies: CurrencyInfo[] = [

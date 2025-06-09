@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/react-native';
-import { CurrencyInfo } from 'src/models/CurrencyInfo';
 import React from 'react';
-import CurrencyList from '../CurrencyList';
+import CurrencyList from 'src/components/CurrencyList';
+import { CurrencyInfo } from 'src/models/CurrencyInfo';
 
 jest.mock('../EmptyList', () => {
   const { View, Text } = jest.requireActual('react-native');

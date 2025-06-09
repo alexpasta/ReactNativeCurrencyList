@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/react-native';
 import React from 'react';
-import SearchBar from '../SearchBar';
+import SearchBar from 'src/components/SearchBar';
 
 describe('SearchBar', () => {
   const mockOnChangeText = jest.fn();

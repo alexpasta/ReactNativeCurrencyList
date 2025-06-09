@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { CurrencyInfo } from 'src/models/CurrencyInfo';
-import { storage } from '../storage';
+import { storage } from 'src/utils/storage';
 
 jest.mock('@react-native-async-storage/async-storage', () => ({
   setItem: jest.fn(),

@@ -1,5 +1,5 @@
 import { CurrencyInfo } from 'src/models/CurrencyInfo';
-import { getSearchHint, searchCurrencies } from '../currencySearch';
+import { getSearchHint, searchCurrencies } from 'src/utils/currencySearch';
 
 describe('searchCurrencies', () => {
   const mockCurrencies: CurrencyInfo[] = [

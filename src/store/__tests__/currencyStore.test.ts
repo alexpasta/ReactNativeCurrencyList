@@ -1,8 +1,8 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 import { CurrencyInfo } from 'src/models/CurrencyInfo';
 import { INITIAL_DATA } from 'src/models/sampleData';
+import { useCurrencyStore } from 'src/store/currencyStore';
 import { storage } from 'src/utils/storage';
-import { useCurrencyStore } from '../currencyStore';
 
 jest.mock('src/utils/storage', () => ({
   storage: {
