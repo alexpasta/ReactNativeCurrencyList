@@ -1,15 +1,19 @@
+import React, { useEffect } from 'react';
+import { BackHandler, Keyboard, KeyboardAvoidingView, Platform, StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import CurrencyFilter from 'src/components/CurrencyFilter';
 import CurrencyList from 'src/components/CurrencyList';
 import FloatingActionMenu from 'src/components/FloatingActionMenu';
 import SearchBar from 'src/components/SearchBar';
 import { strings } from 'src/constants/strings';
 import { useCurrencyStore } from 'src/store/currencyStore';
-import React, { useEffect } from 'react';
-import { BackHandler, Keyboard, KeyboardAvoidingView, Platform, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useDebounce } from 'src/utils/useDebounce';
 
 const DemoScreen: React.FC = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
+  
+  // Debounce search term to improve performance
+  const debouncedSearchTerm = useDebounce(searchTerm, 1000);
   
   const {
     currencies,
@@ -75,7 +79,7 @@ const DemoScreen: React.FC = () => {
 
         <CurrencyList
           data={currencies}
-          searchTerm={searchTerm}
+          searchTerm={debouncedSearchTerm}
         />
 
         <FloatingActionMenu actions={fabActions} />

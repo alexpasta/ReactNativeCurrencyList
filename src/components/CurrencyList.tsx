@@ -11,7 +11,7 @@ type Props = {
   onItemPress?: (item: CurrencyInfo) => void;
 };
 
-const CurrencyList: React.FC<Props> = ({ 
+const CurrencyListComponent: React.FC<Props> = ({ 
   data, 
   searchTerm = '',
   onItemPress 
@@ -57,5 +57,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 }); 
+
+const CurrencyList = React.memo(CurrencyListComponent);
 
 export default CurrencyList;
